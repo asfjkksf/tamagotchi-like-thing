@@ -1,0 +1,20 @@
+# this will be a tamagotchi-inspired digital pet :)
+# some interactive elements will be feeding, resting, playing, and maybe also more things
+# will definitely need to add buttons and make it straightforward and interactive
+# must remember to make sure you cant stack more than 100 things
+# if [thing] > 100, then make it go back to 100 idk
+
+hunger = 12
+tired = 100
+play = 100
+
+if __name__ == "__main__":
+    print('huh')
+    while True:
+     print('second row')
+     choice = input("Enter: ")
+    
+     if (choice == "1"):
+        print(f'{hunger}')
+     elif (choice == "2"):
+        break
