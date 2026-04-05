@@ -1,13 +1,29 @@
-# this will be a tamagotchi-inspired digital pet :)
-# some interactive elements will be feeding, resting, playing, and maybe also more things
-# will definitely need to add buttons and make it straightforward and interactive
-# must remember to make sure you cant stack more than 100 things
-# if [thing] > 100, then make it go back to 100 idk
-# critter: https://pythonprogramming.altervista.org/pygame-animate-a-sprite/
-
 import pygame 
 pygame.init()
 
-screen_width = 800 
-screen_height = 800
+screen = pygame.display.set_mode((900, 600)) # pixel screen size 
+
+pigeon = pygame.image.load('pigeon.png').convert_alpha()
+
+
+run = True
+while run == True:
+    screen.fill('grey')
+    screen.blit(pigeon, (300, 250))
+
+
+    for event in pygame.event.get(): 
+        if event.type == pygame.QUIT:
+            run = False
+         
+    pygame.display.update()   
+pygame.quit() #works even w/o that so idk 
+
+#-----------------------------------------------
+hunger = 100
+clean = 100
+love = 100
+fun = 100
+health = 100
+
 
