@@ -2,7 +2,7 @@ import pygame
 pygame.init()
 
 screen = pygame.display.set_mode((900, 600)) # pixel screen size 
-
+font = pygame.font.Font(pygame.font.get_default_font(), 36)
 pigeon = pygame.image.load('pigeon.png').convert_alpha()
 
 
@@ -15,7 +15,7 @@ while run == True:
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
             run = False
-         
+       
     pygame.display.update()   
 pygame.quit() #works even w/o that so idk 
 
