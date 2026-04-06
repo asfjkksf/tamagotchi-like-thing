@@ -1,42 +1,24 @@
-import pygame 
-pygame.init() 
-screen = pygame.display.set_mode((900, 600)) 
-font = pygame.font.SysFont("Cooper black", 25, True)
-
-health = 100
-hunger = 100
-clean = 100
-love = 100
-fun = 100
+import time
+import random
 
 
-def draw_text(text, font, text_col, x, y):
-    img = font.render(text, True, text_col)
-    screen.blit(img, (x, y))   
-    
-              
-run = True
-while run == True:
-    screen.fill('grey')
-   
-    draw_text(("health="), font, (255, 0, 0), 30, 20)
-    draw_text(str(health), font, (255, 0, 0), 130, 20)
+#points = 0 
 
-    draw_text(("hunger="), font, (255, 0, 0), 30, 50)
-    draw_text(str(hunger), font, (255, 0, 0), 135, 50)
+#def ahem(): 
+ # print(f"you had {points} points,")
+ # points = points + random.randint(18, 42)
+  #print(f" but now {points} points! ")
 
-    draw_text(("clean="), font, (255, 0, 0), 30, 80)
-    draw_text(str(clean), font, (255, 0, 0), 110, 80)
+#starttime = time.monotonic()
+#while True:
+   # ahem()
+    #time.sleep(2 - ((time.monotonic() - starttime) % 2))
 
-    draw_text(("love="), font, (255, 0, 0), 30, 110)
-    draw_text(str(love), font, (255, 0, 0), 100, 110)
 
-    draw_text(("fun="), font, (255, 0, 0), 30, 140)
-    draw_text(str(fun), font, (255, 0, 0), 90, 140)
+def func():
+    global a
+    a = a + 1
+    print(a)
 
-    for event in pygame.event.get(): 
-        if event.type == pygame.QUIT:
-            run = False
-       
-    pygame.display.update()   
-pygame.quit() 
+a = 1
+func()
