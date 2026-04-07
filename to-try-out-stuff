@@ -1,24 +1,22 @@
 import time
 import random
-
-
-#points = 0 
-
-#def ahem(): 
- # print(f"you had {points} points,")
- # points = points + random.randint(18, 42)
-  #print(f" but now {points} points! ")
-
-#starttime = time.monotonic()
-#while True:
-   # ahem()
-    #time.sleep(2 - ((time.monotonic() - starttime) % 2))
-
+points = 1
+interval = 3 
+min = 2
 
 def func():
-    global a
-    a = a + 1
-    print(a)
+  global points
+  points = points + 0.01
+  print(points)
 
-a = 1
-func()
+def func2():
+  global points
+  points = points
+  print(points)
+
+while True:
+  time.sleep(interval)
+  if random.randint(0, 100) > min:
+   func()
+  else:
+   func2()
