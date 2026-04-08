@@ -1,5 +1,8 @@
 import pygame 
+import time
+import random
 pygame.init()
+
 
 screen = pygame.display.set_mode((900, 600)) # pixel screen size 
 font = pygame.font.SysFont("Malgun Gothic", 25, True)
@@ -10,77 +13,36 @@ love = 100
 fun = 100
 health = 100
 
+interval = 3 
+min = 2
+
 
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y)) 
     
+def reduceHealth():
+  global health
+  health = health - 0.001
+  print(health)
+
+
 
 run = True
 while run == True:
     screen.blit(pigeon, (300, 250))
-
+    time.sleep(interval) 
     draw_text(("health="), font, (100, 0, 100), 30, 20)
+if random.randint(0, 100) > min:
+    reduceHealth()
     draw_text(str(health), font, (100, 0, 100), 130, 20)
-
-    draw_text(("hunger="), font, (100, 0, 100), 30, 50)
-    draw_text(str(hunger), font, (100, 0, 100), 135, 50)
-
-    draw_text(("clean="), font, (100, 0, 100), 30, 80)
-    draw_text(str(clean), font, (100, 0, 100), 110, 80)
-
-    draw_text(("love="), font, (100, 0, 100), 30, 110)
-    draw_text(str(love), font, (100, 0, 100), 100, 110)
-
-    draw_text(("fun="), font, (100, 0, 100), 30, 140)
-    draw_text(str(fun), font, (100, 0, 100), 90, 140)
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
-            run = False
-       
-    pygame.display.update()   
+            run = False  
+    pygame.display.update()  
 pygame.quit() 
 
 

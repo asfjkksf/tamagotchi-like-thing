@@ -20,3 +20,17 @@ while True:
    func()
   else:
    func2()
+
+
+
+    #draw_text(("hunger="), font, (100, 0, 100), 30, 50)
+    #draw_text(str(hunger), font, (100, 0, 100), 135, 50)
+
+    #draw_text(("clean="), font, (100, 0, 100), 30, 80)
+    #draw_text(str(clean), font, (100, 0, 100), 110, 80)
+
+    #draw_text(("love="), font, (100, 0, 100), 30, 110)
+    #draw_text(str(love), font, (100, 0, 100), 100, 110)
+
+    #draw_text(("fun="), font, (100, 0, 100), 30, 140)
+    #draw_text(str(fun), font, (100, 0, 100), 90, 140)
