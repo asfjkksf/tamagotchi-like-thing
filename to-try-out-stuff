@@ -3,16 +3,13 @@ import time
 import random
 pygame.init()
 
+clock = pygame.time.Clock()
 screen = pygame.display.set_mode((900, 600)) 
+screen.fill("grey")
 font = pygame.font.SysFont("Malgun Gothic", 25, True)
-
-health = 100
-
-interval = 3 
-min = 2
-
-health = 100
-
+timer_event = pygame.event.custom_type()
+pygame.time.set_timer(timer_event, 3000)
+health = 101
 
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
@@ -20,19 +17,24 @@ def draw_text(text, font, text_col, x, y):
     
 def reduceHealth():
   global health
-  health = health - 0.00002
+  health = health - 1
   print(health)
-
+  draw_text(str(health), font, (100, 0, 100), 123, 20) 
+  draw_text(("health="), font, (100, 0, 100), 30, 20)
 
 run = True
 while run == True:
-    
-    draw_text(("health="), font, (100, 0, 100), 30, 20)
-    draw_text(str(health), font, (100, 0, 100), 120, 20)   
-    reduceHealth()
-
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
-            run = False  
+            run = False 
+
+
+        if event.type == timer_event:
+            pygame.draw.rect(screen, (255, 245, 206),
+                 [20, 15, 148, 240], 0)
+            reduceHealth()
+
+
     pygame.display.update()  
 pygame.quit()    
+

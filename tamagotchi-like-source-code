@@ -3,43 +3,51 @@ import time
 import random
 pygame.init()
 
+clock = pygame.time.Clock()
 screen = pygame.display.set_mode((900, 600)) 
 font = pygame.font.SysFont("Malgun Gothic", 25, True)
 pigeon = pygame.image.load('pigeon.png').convert_alpha()
-hunger = 100
-clean = 100
-love = 100
-fun = 100
-health = 100
+timer_event = pygame.event.custom_type()
+pygame.time.set_timer(timer_event, 3000)
 
-interval = 3 
-min = 2
+
+health = 100
+satiety = 100
+love = 100
 
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y)) 
-    
-def reduceHealth():
-  global health
-  health = health - 0.001
-  print(health)
 
+def reduceAll():
+  global health
+  health = health - 1
+  draw_text(str(health), font, (100, 0, 100), 123, 20) 
+  draw_text(("health="), font, (100, 0, 100), 30, 20)
+  global satiety
+  satiety = satiety - 1
+  draw_text(str(satiety), font, (100, 0, 100), 130, 50) 
+  draw_text(("satiety="), font, (100, 0, 100), 30, 50)
+  global love
+  love = love - 1
+  draw_text(str(love), font, (100, 0, 100), 100, 80) 
+  draw_text(("love="), font, (100, 0, 100), 30, 80) 
 
 run = True
 while run == True:
-    screen.blit(pigeon, (300, 250))
-    time.sleep(interval) 
-    draw_text(("health="), font, (100, 0, 100), 30, 20)
-
-if random.randint(0, 100) > min:
-    reduceHealth()
-    draw_text(str(health), font, (100, 0, 100), 130, 20)
-
+  
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
-            run = False  
+            run = False 
+
+        if event.type == timer_event:
+            pygame.draw.rect(screen, (255, 245, 206),
+                 [17, 17, 160, 105], 0)
+            reduceAll()
+
+
     pygame.display.update()  
-pygame.quit() 
+pygame.quit()   
 
 
 
