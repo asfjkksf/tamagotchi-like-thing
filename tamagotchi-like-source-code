@@ -3,8 +3,7 @@ import time
 import random
 pygame.init()
 
-
-screen = pygame.display.set_mode((900, 600)) # pixel screen size 
+screen = pygame.display.set_mode((900, 600)) 
 font = pygame.font.SysFont("Malgun Gothic", 25, True)
 pigeon = pygame.image.load('pigeon.png').convert_alpha()
 hunger = 100
@@ -16,7 +15,6 @@ health = 100
 interval = 3 
 min = 2
 
-
 def draw_text(text, font, text_col, x, y):
     img = font.render(text, True, text_col)
     screen.blit(img, (x, y)) 
@@ -27,23 +25,23 @@ def reduceHealth():
   print(health)
 
 
-
 run = True
 while run == True:
     screen.blit(pigeon, (300, 250))
     time.sleep(interval) 
     draw_text(("health="), font, (100, 0, 100), 30, 20)
+
 if random.randint(0, 100) > min:
     reduceHealth()
     draw_text(str(health), font, (100, 0, 100), 130, 20)
-
-
 
     for event in pygame.event.get(): 
         if event.type == pygame.QUIT:
             run = False  
     pygame.display.update()  
 pygame.quit() 
+
+
 
 
 

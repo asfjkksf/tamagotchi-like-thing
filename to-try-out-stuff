@@ -1,36 +1,38 @@
+import pygame 
 import time
 import random
-points = 1
+pygame.init()
+
+screen = pygame.display.set_mode((900, 600)) 
+font = pygame.font.SysFont("Malgun Gothic", 25, True)
+
+health = 100
+
 interval = 3 
 min = 2
 
-def func():
-  global points
-  points = points + 0.01
-  print(points)
-
-def func2():
-  global points
-  points = points
-  print(points)
-
-while True:
-  time.sleep(interval)
-  if random.randint(0, 100) > min:
-   func()
-  else:
-   func2()
+health = 100
 
 
+def draw_text(text, font, text_col, x, y):
+    img = font.render(text, True, text_col)
+    screen.blit(img, (x, y)) 
+    
+def reduceHealth():
+  global health
+  health = health - 0.00002
+  print(health)
 
-    #draw_text(("hunger="), font, (100, 0, 100), 30, 50)
-    #draw_text(str(hunger), font, (100, 0, 100), 135, 50)
 
-    #draw_text(("clean="), font, (100, 0, 100), 30, 80)
-    #draw_text(str(clean), font, (100, 0, 100), 110, 80)
+run = True
+while run == True:
+    
+    draw_text(("health="), font, (100, 0, 100), 30, 20)
+    draw_text(str(health), font, (100, 0, 100), 120, 20)   
+    reduceHealth()
 
-    #draw_text(("love="), font, (100, 0, 100), 30, 110)
-    #draw_text(str(love), font, (100, 0, 100), 100, 110)
-
-    #draw_text(("fun="), font, (100, 0, 100), 30, 140)
-    #draw_text(str(fun), font, (100, 0, 100), 90, 140)
+    for event in pygame.event.get(): 
+        if event.type == pygame.QUIT:
+            run = False  
+    pygame.display.update()  
+pygame.quit()    
